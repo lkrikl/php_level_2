@@ -40,18 +40,54 @@ class Product {
 }
 
 class SeoProduct extends Product {
-    
+    protected $h1;
+    protected $title;
+    protected $keywords;
+    protected $description;
+
+    public function __construct($id, $category, $name, $image, $describe, $price, $h1, $title, $keywords, $description) {
+        parent::__construct($id, $category, $name, $image, $describe, $price);
+        $this->h1 = $h1;
+        $this->title = $title;
+        $this->keywords = $keywords;
+        $this->description = $description;
+    }
+
+    public function view() {
+        parent::view();
+    }
+
+    public function prepareH1() {
+        return $this->h1;
+    }
+
+    public function prepareTitle() {
+        return $this->title;
+    }
+
+    public function prepareKeywords() {
+        return $this->keywords;
+    }
+
+    public function prepareDescription() {
+        return $this->description;
+    }
 }
 
 
 
 
-$product = new Product(1, 'МФУ струйные', 'МФУ Canon MG3640 white', 'mg3640.jpg', 'МФУ (принтер, сканер, копир) 4-цветная струйная печать', 3600);
+$product = new SeoProduct(1, 'МФУ струйные', 'МФУ Canon MG3640 white', 'mg3640.jpg', 'МФУ (принтер, сканер, копир) 4-цветная струйная печать', 3600, 'МФУ Canon MG3640 white', 'МФУ Canon MG3640 white', 'mg3640', 'МФУ (принтер, сканер, копир) 4-цветная струйная печать');
 echo '<pre>';
 var_dump($product);
 echo '</pre>';
 
 $product->view();
+
+echo $product->prepareH1();
+echo $product->prepareTitle();
+echo $product->prepareKeywords();
+echo $product->prepareDescription();
 
 
 
