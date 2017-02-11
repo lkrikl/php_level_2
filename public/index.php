@@ -53,10 +53,6 @@ class SeoProduct extends Product {
         $this->description = $description;
     }
 
-    public function view() {
-        parent::view();
-    }
-
     public function prepareH1() {
         return $this->h1;
     }
